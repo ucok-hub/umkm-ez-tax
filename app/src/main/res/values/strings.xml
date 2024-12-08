@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">capstone_pajak</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="comes_with_a_chatbot_feature_comes_in_handy_when_you_re_confused_about_tax">Comes with a chatbot feature, comes in handy when you’re confused about tax.</string>
+    <string name="people_who_complain_about_taxes_can_be_divided_into_two_classes_men_and_women">“People who complain about taxes can be divided into two classes: men and women.”</string>
+    <string name="ai_chat">AI Chat</string>
+    <string name="click_now">CLICK NOW!</string>
+    <string name="we_ll_get_you_the_largest_refund_or_lowest_tax_you_qualify_for">We’ll get you the largest refund or lowest tax you qualify for.</string>
+    <string name="need_your_taxes_prepared">NEED YOUR TAXES PREPARED?</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="start_chat_now">start chat now</string> />
+</resources>
