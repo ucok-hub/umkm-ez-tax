@@ -1,14 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.CalculateFragment">
+    android:padding="16dp"
+    android:background="@color/secondary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- Dropdown Jenis Perhitungan -->
+        <Spinner
+            android:id="@+id/spinner_calculation_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/calculation_types"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Input Penghasilan -->
+        <EditText
+            android:id="@+id/input_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Penghasilan"
+            android:inputType="number"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Input Tahun (Untuk Endpoint under2025) -->
+        <EditText
+            android:id="@+id/input_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Tahun Berusaha"
+            android:inputType="number"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Input Norma (Untuk Endpoint 2025) -->
+        <EditText
+            android:id="@+id/input_norma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Norma (%)"
+            android:inputType="number"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Input Harga Pokok Penjualan (HPP) -->
+        <EditText
+            android:id="@+id/input_hpp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Harga Pokok Penjualan"
+            android:inputType="number"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Input Biaya Usaha -->
+        <EditText
+            android:id="@+id/input_business_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Biaya Usaha"
+            android:inputType="number"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tombol Hitung -->
+        <Button
+            android:id="@+id/button_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hitung Pajak"
+            android:backgroundTint="@color/third"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Hasil Perhitungan -->
+        <TextView
+            android:id="@+id/text_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

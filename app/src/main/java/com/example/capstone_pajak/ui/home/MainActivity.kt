@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.example.capstone_pajak.R
 import com.example.capstone_pajak.ui.chat.AIChatFragment
 import com.example.capstone_pajak.ui.menu.MenuFragment
-import com.example.capstone_pajak.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
