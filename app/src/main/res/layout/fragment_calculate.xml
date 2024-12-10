@@ -46,17 +46,21 @@
                 android:padding="8dp" />
         </LinearLayout>
 
-        <!-- Input Tahun (Untuk Endpoint under2025) -->
-        <EditText
+        <!-- Input Tahun dengan TextView untuk DatePicker -->
+        <TextView
             android:id="@+id/input_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Masukkan Tahun Berusaha"
-            android:inputType="number"
+            android:hint="Pilih Tahun"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
             android:visibility="gone"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical" />
 
-        <!-- Input Norma (Untuk Endpoint 2025) -->
+        <!-- Input Norma -->
         <EditText
             android:id="@+id/input_norma"
             android:layout_width="match_parent"
@@ -93,6 +97,17 @@
             android:layout_height="wrap_content"
             android:text="Hitung Pajak"
             android:backgroundTint="@color/third"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tombol Info -->
+        <Button
+            android:id="@+id/button_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Info"
+            android:backgroundTint="@color/primary"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />

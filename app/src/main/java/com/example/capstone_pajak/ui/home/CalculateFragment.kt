@@ -1,5 +1,7 @@
 package com.example.capstone_pajak.ui.home
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,7 +16,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 class CalculateFragment : Fragment() {
 
@@ -26,11 +28,12 @@ class CalculateFragment : Fragment() {
 
         val spinner = view.findViewById<Spinner>(R.id.spinner_calculation_type)
         val incomeInput = view.findViewById<EditText>(R.id.input_income)
-        val yearInput = view.findViewById<EditText>(R.id.input_year)
+        val yearInput = view.findViewById<TextView>(R.id.input_year)
         val normaInput = view.findViewById<EditText>(R.id.input_norma)
         val hppInput = view.findViewById<EditText>(R.id.input_hpp)
         val businessExpenseInput = view.findViewById<EditText>(R.id.input_business_expense)
         val calculateButton = view.findViewById<Button>(R.id.button_calculate)
+        val infoButton = view.findViewById<Button>(R.id.button_info)
         val resultText = view.findViewById<TextView>(R.id.text_result)
 
         // Format input penghasilan dengan pemisah ribuan
@@ -45,6 +48,11 @@ class CalculateFragment : Fragment() {
                 incomeInput.addTextChangedListener(this)
             }
         })
+
+        // Setup DatePickerDialog for year selection
+        yearInput.setOnClickListener {
+            showYearPickerDialog(yearInput, spinner.selectedItemPosition)
+        }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -61,7 +69,7 @@ class CalculateFragment : Fragment() {
                         hppInput.visibility = View.GONE
                         businessExpenseInput.visibility = View.GONE
                     }
-                    2 -> { // Progressive with Bookkeeping
+                    2 -> { // Progressive Tax with Bookkeeping
                         yearInput.visibility = View.GONE
                         normaInput.visibility = View.GONE
                         hppInput.visibility = View.VISIBLE
@@ -93,7 +101,52 @@ class CalculateFragment : Fragment() {
             }
         }
 
+        // Tombol Info
+        infoButton.setOnClickListener {
+            val selectedOption = spinner.selectedItemPosition
+            showInfoDialog(selectedOption)
+        }
+
         return view
+    }
+
+    private fun showYearPickerDialog(yearInput: TextView, calculationType: Int) {
+        val calendar = Calendar.getInstance()
+        val currentYear = calendar.get(Calendar.YEAR)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, year, _, _ -> yearInput.text = year.toString() },
+            currentYear, calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
+        datePickerDialog.datePicker.calendarViewShown = false
+        datePickerDialog.datePicker.spinnersShown = true
+
+        when (calculationType) {
+            0 -> datePickerDialog.datePicker.maxDate =
+                Calendar.getInstance().apply { set(2024, Calendar.DECEMBER, 31) }.timeInMillis
+            1 -> datePickerDialog.datePicker.minDate =
+                Calendar.getInstance().apply { set(2025, Calendar.JANUARY, 1) }.timeInMillis
+        }
+
+        datePickerDialog.show()
+    }
+
+    private fun showInfoDialog(selectedOption: Int) {
+        val infoText = when (selectedOption) {
+            0 -> "Under 2025: Masukkan jumlah penghasilan dan tahun berusaha untuk perhitungan pajak sebelum 2025."
+            1 -> "2025 Onwards: Masukkan penghasilan dan norma untuk menghitung pajak setelah 2025."
+            2 -> "Progressive Tax with Bookkeeping: Masukkan penghasilan, HPP, dan biaya usaha untuk perhitungan progresif."
+            else -> "Pilih opsi untuk melihat detail informasi."
+        }
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Informasi Perhitungan")
+            .setMessage(infoText)
+            .setPositiveButton("Tutup") { dialog, _ -> dialog.dismiss() }
+            .create()
+            .show()
     }
 
     private fun calculateTaxUnder2025(income: String, year: String, resultText: TextView) {
@@ -149,7 +202,7 @@ class CalculateFragment : Fragment() {
                         val jsonResponse = JSONObject(responseBody!!)
                         val taxAmount = jsonResponse.getLong("taxAmount")
                         val formattedTax = "Rp ${NumberFormat.getNumberInstance(Locale("id", "ID")).format(taxAmount)}"
-                        resultText.text = "Hasil Pajak: $formattedTax"
+                        resultText.text = "Pajak Yang Harus di Bayar: $formattedTax"
                     } else {
                         resultText.text = "Error: ${response.message()}"
                     }
