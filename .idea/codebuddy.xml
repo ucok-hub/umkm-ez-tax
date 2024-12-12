@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CodebuddyPersistentProjectState">
+    <option name="additionalOptionsVisible" value="true" />
+    <option name="autoFileMode" value="NONE" />
+    <option name="autoFileSelection" value="true" />
+    <option name="promptHistory">
+      <list>
+        <option value="I was hoping you could make the file that I chose so you can understand it and make a reference. I need you to make the contents of the menu page on the bottom left on the bottom navbar. In it, I plan to have a user profile photo and registered email positioned right below the user's pfp. Then we enter the discussion of the main content of the 'menu' page, I want the contents to consist of various vertical menu options that the user can choose, later I plan to hold 3 possibilities. First, there will be settings (later in the plan, there will be dark mode only with the implementation using switches). Second, there will be the &quot;build info,&quot; if clicked by the user, the user will be redirected to the build info page, which contains the application version; third, there will be about the developers, which will include the names of the developers. What do you think of my idea? Is it good enough? Try to give your opinion! Don't start executing before my decision." />
+      </list>
+    </option>
+    <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
+    <option name="ttsEnabled" value="false" />
+  </component>
+</project>

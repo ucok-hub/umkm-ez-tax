@@ -46,6 +46,19 @@
                 android:padding="8dp" />
         </LinearLayout>
 
+        <!-- Dropdown Golongan -->
+        <TextView
+            android:id="@+id/golongan_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pilih Golongan"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical" />
+
         <!-- Input Tahun dengan TextView untuk DatePicker -->
         <TextView
             android:id="@+id/input_year"
