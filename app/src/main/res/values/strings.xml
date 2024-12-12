@@ -2,13 +2,37 @@
     <string name="app_name">capstone_pajak</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="comes_with_a_chatbot_feature_comes_in_handy_when_you_re_confused_about_tax">Comes with a chatbot feature, comes in handy when you’re confused about tax.</string>
-    <string name="people_who_complain_about_taxes_can_be_divided_into_two_classes_men_and_women">“People who complain about taxes can be divided into two classes: men and women.”</string>
+    <string name="comes_with_a_chatbot_feature_comes_in_handy_when_you_re_confused_about_tax">
+        Comes with a chatbot feature, comes in handy when you’re confused about tax.
+    </string>
+    <string name="people_who_complain_about_taxes_can_be_divided_into_two_classes_men_and_women">
+        “People who complain about taxes can be divided into two classes: men and women.”
+    </string>
     <string name="ai_chat">AI Chat</string>
     <string name="click_now">CLICK NOW!</string>
-    <string name="we_ll_get_you_the_largest_refund_or_lowest_tax_you_qualify_for">We’ll get you the largest refund or lowest tax you qualify for.</string>
+    <string name="we_ll_get_you_the_largest_refund_or_lowest_tax_you_qualify_for">
+        We’ll get you the largest refund or lowest tax you qualify for.
+    </string>
     <string name="need_your_taxes_prepared">NEED YOUR TAXES PREPARED?</string>
     <string name="user_example_com">user@example.com</string>
     <string name="profile_image">Profile Image</string>
-    <string name="start_chat_now">start chat now</string> />
+    <string name="start_chat_now">start chat now</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="build_info">Build Info</string>
+    <string name="about_developers">About Developers</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="contact_email">Contact: rafifn.a18@gmail.com</string>
+    <string name="ml_team">Machine Learning Team</string>
+    <string name="cc_team">Cloud Computing Team</string>
+    <string name="md_team">Mobile Development Team</string>
+    <string name="menu_title">Menu</string>
+    <string name="app_settings">App Settings</string>
+
+    <!-- String Array untuk Calculation Types -->
+    <string-array name="calculation_types">
+        <item>Under 2025</item>
+        <item>2025 Onwards</item>
+        <item>Progressive Tax with Bookkeeping</item>
+    </string-array>
 </resources>

@@ -1,0 +1,42 @@
+[33mcommit 3b77c3ec53c0bc28c298683e4ca8405a8f78e5fe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlaman-calculate[m[33m, [m[1;31morigin/laman-calculate[m[33m)[m
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Thu Dec 12 17:15:55 2024 +0700
+
+    initiate menu
+
+[33mcommit add4b2c06826a48dfa5507d7c72f63d1ed09ace1[m
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Tue Dec 10 23:37:15 2024 +0700
+
+    calculate final
+
+[33mcommit a7582aa3aca985b6fcb799773b27d81d9e688695[m
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Tue Dec 10 17:41:16 2024 +0700
+
+    update laman calculate v2
+
+[33mcommit 610ff0b0948c35a2ca34faddb16ebaaef741190f[m
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Tue Dec 10 01:14:31 2024 +0700
+
+    halaman calculate v1
+
+[33mcommit d1838d670368e96b64100e7e6c474435ce768b76[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 9ae7774 8f69d84
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Sun Dec 8 15:29:29 2024 +0700
+
+    Merge branch 'master' of https://github.com/ucok-hub/umkm-ez-tax
+
+[33mcommit 9ae7774751bc24fb66caa6b7f8776bd685f18ec8[m
+Author: rafif nur <rafifn.a18@gmail.com>
+Date:   Sun Dec 8 15:24:06 2024 +0700
+
+    initial commit (home screen)
+
+[33mcommit 8f69d84f06fb337cd5c10055b50ddc8c897c262f[m
+Author: rafif nuraydin <54761406+ucok-hub@users.noreply.github.com>
+Date:   Sun Dec 8 15:18:06 2024 +0700
+
+    Initial commit
