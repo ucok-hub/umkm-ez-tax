@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/AIChatFragment">
+
+    <fragment
+        android:id="@+id/AIChatFragment"
+        android:name="com.example.capstone_pajak.ui.chat.AIChatFragment"
+        android:label="AI Chat">
+        <action
+            android:id="@+id/action_AIChatFragment_to_ChatRoomFragment"
+            app:destination="@id/ChatRoomFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ChatRoomFragment"
+        android:name="com.example.capstone_pajak.ui.chat.ChatRoomFragment"
+        android:label="Chat Room" />
+</navigation>
+
+
