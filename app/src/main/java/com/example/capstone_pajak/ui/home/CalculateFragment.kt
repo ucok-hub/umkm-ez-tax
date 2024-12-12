@@ -1,6 +1,8 @@
 package com.example.capstone_pajak.ui.home
 
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -27,8 +29,8 @@ class CalculateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_calculate, container, false)
-
-        // Find all views
+        
+        val normaCekLink = view.findViewById<TextView>(R.id.link_check_norma)
         val spinner = view.findViewById<Spinner>(R.id.spinner_calculation_type)
         val incomeInput = view.findViewById<EditText>(R.id.input_income)
         val yearInput = view.findViewById<TextView>(R.id.input_year)
@@ -75,23 +77,26 @@ class CalculateFragment : Fragment() {
                     0 -> { // Under 2025
                         yearInput.visibility = View.VISIBLE
                         normaInput.visibility = View.GONE
-                        hppInput.visibility = View.GONE
                         businessExpenseInput.visibility = View.GONE
+                        hppInput.visibility = View.GONE
                         golonganDropdown.visibility = View.GONE
+                        normaCekLink.visibility = View.GONE
                     }
                     1 -> { // 2025 Onwards
                         yearInput.visibility = View.GONE
                         normaInput.visibility = View.VISIBLE
-                        hppInput.visibility = View.GONE
                         businessExpenseInput.visibility = View.GONE
+                        hppInput.visibility = View.GONE
                         golonganDropdown.visibility = View.VISIBLE
+                        normaCekLink.visibility = View.VISIBLE
                     }
                     2 -> { // Progressive Tax with Bookkeeping
                         yearInput.visibility = View.GONE
                         normaInput.visibility = View.GONE
-                        hppInput.visibility = View.VISIBLE
                         businessExpenseInput.visibility = View.VISIBLE
+                        hppInput.visibility = View.VISIBLE
                         golonganDropdown.visibility = View.VISIBLE
+                        normaCekLink.visibility = View.GONE
                     }
                 }
             }
@@ -125,6 +130,14 @@ class CalculateFragment : Fragment() {
             showInfoDialog()
         }
 
+        // Add click listener for norma check link
+        normaCekLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://datacenter.ortax.org/ortax/norma/norma")
+            }
+            startActivity(intent)
+        }
+
         return view
     }
 
@@ -132,14 +145,37 @@ class CalculateFragment : Fragment() {
     private fun showInfoDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Informasi Penggunaan")
-        builder.setMessage(
-            "1. Pilih jenis perhitungan yang diinginkan.\n" +
-                    "2. Isi jumlah penghasilan sesuai format yang berlaku.\n" +
-                    "3. Jika memilih jenis perhitungan 'Under 2025', masukkan tahun usaha.\n" +
-                    "4. Jika memilih '2025 Onwards', isi norma sesuai kategori.\n" +
-                    "5. Untuk jenis 'Progressive Tax', masukkan HPP dan Biaya Usaha.\n" +
-                    "6. Tekan tombol 'Hitung Pajak' untuk mendapatkan hasil perhitungan."
-        )
+        
+        // Get the selected calculation type
+        val calculationType = view?.findViewById<Spinner>(R.id.spinner_calculation_type)?.selectedItemPosition ?: 0
+        
+        val message = when (calculationType) {
+            0 -> """
+                Perhitungan pajak untuk periode sebelum 2025:
+                1. Masukkan penghasilan bruto
+                2. Pilih tahun perhitungan
+                3. Sistem akan menghitung pajak final 0.5%
+            """.trimIndent()
+            
+            1 -> """
+                NPPN adalah metode penghitungan penghasilan neto bagi wajib pajak orang pribadi yang menjalankan usaha atau pekerjaan bebas.
+                
+                Dalam metode ini, penghasilan neto dihitung dengan cara mengalikan persentase norma tertentu terhadap penghasilan bruto yang diperoleh.
+                
+                Untuk pengecekan lebih lanjut, silakan klik link di bawah ini
+            """.trimIndent()
+            
+            else -> """
+                Perhitungan pajak progresif dengan pembukuan:
+                1. Masukkan penghasilan bruto
+                2. Masukkan HPP
+                3. Masukkan biaya usaha
+                4. Pilih golongan
+                5. Sistem akan menghitung pajak secara progresif
+            """.trimIndent()
+        }
+        
+        builder.setMessage(message)
         builder.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
         builder.show()
     }

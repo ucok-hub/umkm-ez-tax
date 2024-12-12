@@ -125,6 +125,16 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
+        <!-- Clickable Link for Norma Check -->
+        <TextView
+            android:id="@+id/link_check_norma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CEK NORMA ANDA DISINI"
+            android:textColor="@color/primary"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
         <!-- Hasil Perhitungan -->
         <TextView
             android:id="@+id/text_result"

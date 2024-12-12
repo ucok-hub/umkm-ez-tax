@@ -2,17 +2,16 @@ package com.example.capstone_pajak.ui.menu
 
 import android.os.Bundle
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
 import com.example.capstone_pajak.R
 
 class MenuFragment : Fragment() {
-    private lateinit var darkModeSwitch: SwitchCompat
     private lateinit var buildInfoButton: TextView
     private lateinit var aboutDevsButton: TextView
 
@@ -30,23 +29,11 @@ class MenuFragment : Fragment() {
     }
 
     private fun setupViews(view: View) {
-        darkModeSwitch = view.findViewById(R.id.darkModeSwitch)
         buildInfoButton = view.findViewById(R.id.buildInfoButton)
         aboutDevsButton = view.findViewById(R.id.aboutDevsButton)
 
-        setupDarkModeSwitch()
         setupBuildInfoButton()
         setupAboutDevsButton()
-    }
-
-    private fun setupDarkModeSwitch() {
-        darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
     }
 
     private fun setupBuildInfoButton() {
@@ -54,6 +41,20 @@ class MenuFragment : Fragment() {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.build_info)
                 .setMessage(getString(R.string.version))
+                .setPositiveButton("OK", null)
+                .show()
+        }
+    }
+
+    private fun openEmail() {
+        try {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:rafifn.a18@gmail.com")
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            AlertDialog.Builder(requireContext())
+                .setMessage("No email app found.")
                 .setPositiveButton("OK", null)
                 .show()
         }
@@ -75,14 +76,23 @@ class MenuFragment : Fragment() {
                 A128B4KY3595 – Rafif Nuraydin Adipratama
                 A128B4KY4243 – Syah Rafi Elyusufi Abighaly
 
-                ${getString(R.string.contact_email)}
+                Contact: Click here to email us
             """.trimIndent()
 
-            AlertDialog.Builder(requireContext())
+            val dialog = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.about_developers)
                 .setMessage(message)
                 .setPositiveButton("OK", null)
-                .show()
+                .create()
+
+            dialog.show()
+
+            // Make the message clickable
+            dialog.findViewById<TextView>(android.R.id.message)?.apply {
+                setOnClickListener {
+                    openEmail()
+                }
+            }
         }
     }
 }
