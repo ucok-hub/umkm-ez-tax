@@ -74,5 +74,15 @@
             android:padding="16dp"
             android:text="@string/about_developers" />
 
+        <!-- Logout Button -->
+        <TextView
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/menu_item_background"
+            android:padding="16dp"
+            android:text="@string/logout" />
+
     </LinearLayout>
 </ScrollView>

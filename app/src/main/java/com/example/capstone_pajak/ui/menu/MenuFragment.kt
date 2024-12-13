@@ -9,11 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import com.example.capstone_pajak.R
+import com.example.capstone_pajak.ui.login.LoginActivity
+import com.example.capstone_pajak.util.DataStoreHelper
+import com.example.capstone_pajak.util.FirebaseAuthHelper
+import com.example.capstone_pajak.util.SessionManager
+import kotlinx.coroutines.launch
 
 class MenuFragment : Fragment() {
     private lateinit var buildInfoButton: TextView
     private lateinit var aboutDevsButton: TextView
+    private lateinit var logoutButton: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +38,11 @@ class MenuFragment : Fragment() {
     private fun setupViews(view: View) {
         buildInfoButton = view.findViewById(R.id.buildInfoButton)
         aboutDevsButton = view.findViewById(R.id.aboutDevsButton)
+        logoutButton = view.findViewById(R.id.logoutButton)
 
         setupBuildInfoButton()
         setupAboutDevsButton()
+        setupLogoutButton()
     }
 
     private fun setupBuildInfoButton() {
@@ -93,6 +102,19 @@ class MenuFragment : Fragment() {
                     openEmail()
                 }
             }
+        }
+    }
+
+    private fun setupLogoutButton() {
+        logoutButton.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Yes") { _, _ ->
+                    SessionManager.logout(requireContext())
+                }
+                .setNegativeButton("No", null)
+                .show()
         }
     }
 }

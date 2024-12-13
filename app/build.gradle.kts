@@ -2,6 +2,9 @@ plugins {
         alias(libs.plugins.android.application)
         alias(libs.plugins.kotlin.android)
         id("com.google.devtools.ksp")
+        id("com.google.gms.google-services")
+
+
 }
 
 android {
@@ -44,7 +47,12 @@ dependencies {
         implementation(libs.androidx.constraintlayout)
         implementation(libs.tensorflow.lite)
         implementation(libs.tensorflow.lite.support)
-        implementation (libs.androidx.datastore.preferences)
+        implementation(libs.androidx.datastore.preferences)
+        
+        // Firebase
+        implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+        implementation("com.google.firebase:firebase-auth")
+        implementation("com.google.firebase:firebase-analytics")
 
         // Retrofit untuk komunikasi dengan API
         implementation(libs.retrofit)
@@ -52,6 +60,7 @@ dependencies {
 
         // Room Database untuk penyimpanan data lokal
         implementation(libs.androidx.room.runtime)
+        implementation(libs.firebase.auth.ktx)
         ksp(libs.androidx.room.compiler) // Migrasi ke KSP
 
         // Glide untuk memuat gambar profil
@@ -64,6 +73,4 @@ dependencies {
         // UI test dependencies
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
-
-
 }

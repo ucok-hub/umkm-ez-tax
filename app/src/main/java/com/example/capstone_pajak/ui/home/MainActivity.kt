@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.capstone_pajak.R
 import com.example.capstone_pajak.ui.chat.AIChatFragment
 import com.example.capstone_pajak.ui.menu.MenuFragment
+import com.example.capstone_pajak.util.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         
         // Force light mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        
+        // Check session validity
+        SessionManager.checkSession(this)
+        
+        // Observe login status
+        SessionManager.isLoggedIn.observe(this) { isLoggedIn ->
+            if (!isLoggedIn) finish()
+        }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "347263233076",
+    "firebase_url": "https://easytax-d09d2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "easytax-d09d2",
+    "storage_bucket": "easytax-d09d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347263233076:android:761036a20448dea3f4ae61",
+        "android_client_info": {
+          "package_name": "com.example.capstone_pajak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347263233076-5f9mh8qk86m9ov3cp6fppdh41igo61an.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-HJSENtbCCJU8Cc73pF7pWuTDhQFOic4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347263233076-5f9mh8qk86m9ov3cp6fppdh41igo61an.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
