@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.capstone_pajak.R
@@ -15,16 +17,19 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Menggunakan layout fragment_home.xml untuk HomeFragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-        // Tombol Start Chat
+        
+        // Click Now button - Navigate to Calculate Fragment
+        val clickNowButton = view.findViewById<Button>(R.id.click_now_button)
+        clickNowButton.setOnClickListener {
+            val bottomNavigationView = activity?.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
+            bottomNavigationView?.selectedItemId = R.id.nav_calculate
+        }
+        // Start Chat Now button - Navigate to AI Chat Fragment
         val startChatButton = view.findViewById<Button>(R.id.start_chat_button)
         startChatButton.setOnClickListener {
-            // Tampilkan pesan atau arahkan ke laman baru
-            Toast.makeText(context, "Start Chat Now Button Clicked", Toast.LENGTH_SHORT).show()
-
-            // Tambahkan logika tambahan di sini (contoh: navigasi ke laman ChatFragment)
+            val bottomNavigationView = activity?.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
+            bottomNavigationView?.selectedItemId = R.id.nav_ai_chat
         }
 
         return view

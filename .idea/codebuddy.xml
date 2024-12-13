@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CodebuddyPersistentProjectState">
+    <option name="additionalOptionsVisible" value="true" />
+    <option name="audioEnabled" value="false" />
+    <option name="autoFileSelection" value="true" />
+    <option name="promptHistory">
+      <list>
+        <option value="I want you to clean up the appearance of the home page, because I think the home page is still quite messy, I need you to clean it up so that it looks quite pleasant to look at, can you do that? how do you plan to do it? don't start executing before I say to start!" />
+        <option value="now I want you to look back at the home page, I can see there are 2 buttons, I want the click now button, the user will be taken to the calculate page. and the start chat now button will take the user to the AI Chat page, can you do that? do it immediately, just execute it without waiting for my decision first!" />
+      </list>
+    </option>
+    <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
+    <option name="ttsEnabled" value="false" />
+  </component>
+</project>
