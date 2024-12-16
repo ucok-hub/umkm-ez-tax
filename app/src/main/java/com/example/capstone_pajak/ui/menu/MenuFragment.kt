@@ -4,23 +4,25 @@ import android.os.Bundle
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.example.capstone_pajak.R
-import com.example.capstone_pajak.ui.login.LoginActivity
 import com.example.capstone_pajak.util.DataStoreHelper
-import com.example.capstone_pajak.util.FirebaseAuthHelper
 import com.example.capstone_pajak.util.SessionManager
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
 class MenuFragment : Fragment() {
     private lateinit var buildInfoButton: TextView
     private lateinit var aboutDevsButton: TextView
     private lateinit var logoutButton: TextView
+    private lateinit var profileImage: ImageView
+    private lateinit var userEmailText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +40,25 @@ class MenuFragment : Fragment() {
     private fun setupViews(view: View) {
         buildInfoButton = view.findViewById(R.id.buildInfoButton)
         aboutDevsButton = view.findViewById(R.id.aboutDevsButton)
+        profileImage = view.findViewById(R.id.profileImage)
+        userEmailText = view.findViewById(R.id.userEmail)
         logoutButton = view.findViewById(R.id.logoutButton)
 
+        setupProfile()
         setupBuildInfoButton()
         setupAboutDevsButton()
         setupLogoutButton()
+    }
+
+    private fun setupProfile() {
+        profileImage.setImageResource(R.drawable.avatar)
+        
+        lifecycleScope.launch {
+            DataStoreHelper.getEmail(requireContext())
+                .collect { email ->
+                    userEmailText.text = email ?: getString(R.string.user_example_com)
+                }
+        }
     }
 
     private fun setupBuildInfoButton() {
@@ -107,6 +123,9 @@ class MenuFragment : Fragment() {
 
     private fun setupLogoutButton() {
         logoutButton.setOnClickListener {
+            lifecycleScope.launch {
+                DataStoreHelper.clearData(requireContext())
+            }
             AlertDialog.Builder(requireContext())
                 .setTitle("Logout")
                 .setMessage("Are you sure you want to logout?")

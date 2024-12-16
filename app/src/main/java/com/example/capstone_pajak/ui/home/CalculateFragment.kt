@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.capstone_pajak.R
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
 import java.text.DecimalFormat
@@ -259,7 +261,7 @@ class CalculateFragment : Fragment() {
 
     private fun makeApiCall(url: String, body: JSONObject, resultText: TextView) {
         val client = OkHttpClient()
-        val requestBody = RequestBody.create(MediaType.parse("application/json"), body.toString())
+        val requestBody = body.toString().toRequestBody("application/json".toMediaTypeOrNull())
         val request = Request.Builder()
             .url(url)
             .post(requestBody)
@@ -275,13 +277,20 @@ class CalculateFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 activity?.runOnUiThread {
                     if (response.isSuccessful) {
-                        val responseBody = response.body()?.string()
-                        val jsonResponse = JSONObject(responseBody!!)
-                        val taxAmount = jsonResponse.getLong("taxAmount")
-                        val formattedTax = "Rp ${NumberFormat.getNumberInstance(Locale("id", "ID")).format(taxAmount)}"
-                        resultText.text = "Hasil Pajak: $formattedTax"
+                        response.body?.let { responseBody ->
+                            try {
+                                val jsonResponse = JSONObject(responseBody.string())
+                                val taxAmount = jsonResponse.getLong("taxAmount")
+                                val formattedTax = "Rp ${NumberFormat.getNumberInstance(Locale("id", "ID")).format(taxAmount)}"
+                                resultText.text = "Hasil Pajak: $formattedTax"
+                            } catch (e: Exception) {
+                                resultText.text = "Error: Unable to parse response"
+                            }
+                        } ?: run {
+                            resultText.text = "Error: Empty response from server"
+                        }
                     } else {
-                        resultText.text = "Error: ${response.message()}"
+                        resultText.text = "Error: ${response.message}"
                     }
                 }
             }

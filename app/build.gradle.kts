@@ -73,4 +73,21 @@ dependencies {
         // UI test dependencies
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
+
+        // OkHttp untuk API call
+        implementation("com.squareup.okhttp3:okhttp:4.11.0")
+        // JSON untuk manipulasi data
+        implementation("org.json:json:20211205")
+
+
+        // Navigation Component
+        implementation(libs.androidx.navigation.fragment.ktx)
+        implementation(libs.androidx.navigation.ui.ktx)
+
+
+        // Glide
+        implementation(libs.glide)
+        ksp(libs.glide.compiler)
+
+
 }
