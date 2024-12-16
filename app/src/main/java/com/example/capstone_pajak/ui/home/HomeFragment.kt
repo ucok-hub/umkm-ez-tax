@@ -28,13 +28,6 @@ class HomeFragment : Fragment() {
         val appName = view.findViewById<TextView>(R.id.app_name)
         val infoFeature = view.findViewById<TextView>(R.id.info_feature)
         val featureDescription = view.findViewById<TextView>(R.id.feature_description)
-        val startChatButton = view.findViewById<Button>(R.id.start_chat_button)
-
-        // Aksi tombol navigasi
-        startChatButton.setOnClickListener {
-            // Navigate to AI Chat Fragment
-            findNavController().navigate(R.id.action_homeFragment_to_AIChatFragment)
-        }
 
         return view
     }
