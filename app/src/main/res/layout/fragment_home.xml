@@ -3,119 +3,74 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/secondary">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <!-- Foto Profil dan Email -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingBottom="16dp">
+        <!-- Logo Aplikasi -->
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo_pajak_ai"
+        android:contentDescription="@string/logo_desc"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
 
-            <ImageView
-                android:id="@+id/profile_image"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_launcher_foreground"
-                android:contentDescription="@string/profile_image"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/circle_shape"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/email_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/user_example_com"
-                android:textSize="16sp"
-                android:textColor="@color/primary" />
-        </LinearLayout>
-
-        <!-- Headline -->
+        <!-- Teks Selamat Datang -->
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/need_your_taxes_prepared"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:gravity="center"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/we_ll_get_you_the_largest_refund_or_lowest_tax_you_qualify_for"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Tombol Click Now -->
-        <Button
-            android:id="@+id/click_now_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/click_now"
-            android:backgroundTint="@color/third"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginBottom="64dp" />
-
-        <!-- Segmentasi AI Chat -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ai_chat"
+            android:text="Welcome to"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:gravity="center"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Kutipan -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="93dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="@string/comes_with_a_chatbot_feature_comes_in_handy_when_you_re_confused_about_tax"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:gravity="center"/>
 
         <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SATA AI"
+            android:textSize="32sp"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Informasi Fitur -->
+        <TextView
+            android:id="@+id/info_feature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/people_who_complain_about_taxes_can_be_divided_into_two_classes_men_and_women"
-            android:textSize="14sp"
-            android:textStyle="italic"
-            android:textColor="@color/black"
+            android:text="Explore the feature!"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginBottom="56dp" />
+            android:layout_marginBottom="16dp"/>
 
-        <!-- Tombol Start Chat Now -->
+        <TextView
+            android:id="@+id/feature_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to SATA AI – Simplify your tax solutions with ease. Explore features, calculate taxes seamlessly, and get instant insights tailored for your needs. Let’s make tax management smarter and stress-free. Ready to start? Dive in and experience the future with us!"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Tombol Navigasi ke Fitur Lain -->
         <Button
             android:id="@+id/start_chat_button"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/start_chat_now"
-            android:backgroundTint="@color/third"
+            android:text="Start Chat Now"
+            android:backgroundTint="@color/primary"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/rounded_button" />
+            android:layout_marginTop="16dp"/>
 
     </LinearLayout>
 </ScrollView>

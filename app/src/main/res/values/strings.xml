@@ -32,6 +32,7 @@
     <string name="back_button_label">Back</string>
     <string name="message_input_hint">Type a message...</string>
     <string name="send_button_label">Send</string>
+    <string name="logo_desc" />
 
     <!-- String Array untuk Calculation Types -->
     <string-array name="calculation_types">
